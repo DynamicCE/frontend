@@ -21,46 +21,74 @@ export function SignUp() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <h1>Sign Up</h1>
-      <div>
+    <div className="container">
+      <div className="col-lg-6 offset-lg-3">
         {" "}
-        <label htmlFor="username">Username</label>
-        <input id="username" onChange={onChangeUsername} />
+        <form onSubmit={onSubmit} className="card">
+          <div className="text-center card-header">
+            <h1>Sign Up</h1>
+          </div>
+          <div className="card-body">
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">
+                Username
+              </label>
+              <input
+                id="username"
+                onChange={onChangeUsername}
+                className="form-control"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                E-mail
+              </label>
+              <input
+                type="text"
+                id="email"
+                className="form-control"
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                className="form-control"
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="passwordRepeat" className="form-label">
+                Password Repeat
+              </label>
+              <input
+                type="password"
+                id="passwordRepeat"
+                className="form-control"
+                onChange={(event) => {
+                  setPasswordRepeat(event.target.value);
+                }}
+              />
+            </div>
+            <div className="text-center">
+              <button
+                disabled={!password || password !== passwordRepeat}
+                className="btn btn-outline-primary"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div>
-        <label htmlFor="email">E-mail</label>
-        <input
-          type="text"
-          id="email"
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label htmlFor="passwordRepeat">Password Repeat</label>
-        <input
-          type="password"
-          id="passwordRepeat"
-          onChange={(event) => {
-            setPasswordRepeat(event.target.value);
-          }}
-        />
-      </div>
-      <button disabled={!password || password !== passwordRepeat}>
-        Sign Up
-      </button>
-    </form>
+    </div>
   );
 }
